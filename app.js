@@ -3,7 +3,7 @@ import morgan from "morgan";
 
 //importar Rutas
 import articulosRoutes from "./routes/articulos.routes.js";
-//import polizasRoutes from "./routes/polizas.routes.js";
+import polizasRoutes from "./routes/polizas.routes.js";
 //import movimientosRoutes from "./routes/movimientos.routes.js";
 
 //se crea el servidor
@@ -14,7 +14,7 @@ app.use(express.json());
 
 //RUTAS
 app.use("/api", articulosRoutes);
-//app.use("/api", polizasRoutes);
+app.use("/api", polizasRoutes);
 //app.use("/api", movimientosRoutes);
 
 //Rutas no encontradas

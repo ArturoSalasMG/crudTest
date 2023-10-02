@@ -1,32 +1,23 @@
 import { Router } from "express"; //importan modulo rutas de express
 import {
-    crearArticulo,
-    obtenerArticulo,
     obtenerArticulos,
+    obtenerArticulo,
     borrarArticulo,
+    crearArticulo,
     actualizarArticulo
 } from "../controllers/articulos.controller.js";
 
 const router = Router();
 
+//GET ALL   
 router.get('/articulos', obtenerArticulos);
+// GET AN 
 router.get('/articulos/:id', obtenerArticulo);
-router.delete('/articulos', borrarArticulo);
-router.post('/articulos/:id', crearArticulo);
+// DELETE AN
+router.delete('/articulos/:id', borrarArticulo);
+// CREATE AN 
+router.post('/articulos', crearArticulo);
+// UPDATE
 router.patch('/articulos/:id', actualizarArticulo);
 
-
-/*
-Ruta para polizas
-app.get('/api/poliza', (req, res)=>{
-    pool.query('SELECT * FROM poliza', (error, filas) => {
-        if(error){
-            throw error;
-        }else {
-            res.send(filas);
-        }
-    })
-});
-
-*/
 export default router;

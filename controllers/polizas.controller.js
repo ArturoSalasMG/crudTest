@@ -25,7 +25,7 @@ export const obtenerPoliza = async (req, res) => {
         return res.status(500).json({ message: "Algo salio mal" });    }
 };
 
-export const borrarPoliza = async (req, res) => {
+export const borrarPolizas = async (req, res) => {
     try {
         const { id } = req.param
         const [rows] = await pool.query('SELECT * FROM polizas WHERE id = ?' ,[
@@ -41,7 +41,7 @@ export const borrarPoliza = async (req, res) => {
         return res.status(500).json({ message: "Algo salio mal al solicitar el empleado" });    }
 };
 
-export const crearPoliza = async (req, res) => {
+export const crearPolizas = async (req, res) => {
     try {
         const {nombre, cantidad} = req.body;
         const [rows] = await pool.query(
@@ -54,7 +54,7 @@ export const crearPoliza = async (req, res) => {
     }
 }
 
-export const actualizarPoliza = async (req, res) => {
+export const actualizarPolizas = async (req, res) => {
     try {
       const { id } = req.params;
       const {nombre, precio} = req.body;

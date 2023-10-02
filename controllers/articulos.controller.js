@@ -1,13 +1,13 @@
-import { pool } from "../db.js"
+import { pool } from "../db.js";
 
 
 export const obtenerArticulos = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM `articulos`');
+        const [rows] = await pool.query("SELECT * FROM articulos");
         res.json(rows);
-    } catch (error) {
-        return res.status(500).json({ message: "Algo salio mal al obtener TODOS los articulos" });
-    }
+      } catch (error) {
+        return res.status(500).json({ message: "salio mal al buscar todos los ARTICULOS" });
+      }
 };
 
 export const obtenerArticulo = async (req, res) => {
