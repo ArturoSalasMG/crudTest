@@ -41,6 +41,7 @@ export const borrarPolizas = async (req, res) => {
         return res.status(500).json({ message: "Algo salio mal al solicitar el empleado" });    }
 };
 
+//Si funciona el crear Poliza
 export const crearPolizas = async (req, res) => {
     try {
         const {nombre, cantidad} = req.body;
@@ -48,9 +49,10 @@ export const crearPolizas = async (req, res) => {
             "INSERT INTO polizas (nombre, cantidad) VALUES (?, ?)",
             [nombre, cantidad]
         );
-        res.status(201).json({ id: rows,insertId, nombre, precio, stock });
+
+        res.status(201).json({ id: rows,insertId, nombre, cantidad });
     } catch (error) {
-        return res.status(500).json({ message: "Algo salio mal al ELIMINAR un articulo"})
+        return res.status(500).json({ message: "Algo salio mal al Crear la poliza"})
     }
 }
 

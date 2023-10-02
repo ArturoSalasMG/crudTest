@@ -42,23 +42,23 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="/articulos" method="post">
               <div class="mb-3">
-                <label for="descripcion" class="col-form-label">Descripcion:</label>
-                <input type="text" class="form-control" id="descripcion">
+                <label for="nombre" class="col-form-label">Descripcion:</label>
+                <input name="nombre" type="text" class="form-control" id="nombre">
               </div>
               <div class="mb-3">
                 <label for="precio" class="col-form-label">Precio:</label>
-                <input type="number" class="form-control" id="precio"></input>
+                <input name="precio" type="number" class="form-control" id="precio"></input>
               </div>
               <div class="mb-3">
                 <label for="stock" class="col-form-label">Stock:</label>
-                <input type="number" class="form-control" id="stock"></input>
+                <input name="stock" type="number" class="form-control" id="stock"></input>
               </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Send message</button>
+                <button id="btncrearArticulo" type="submit" class="btn btn-primary">Crear</button>
             </div>
         </form>
         </div>

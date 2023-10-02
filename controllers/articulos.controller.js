@@ -49,6 +49,7 @@ export const crearArticulo = async (req, res) => {
             "INSERT INTO articulos (nombre, precio, stock) VALUES (?, ?, ?)",
             [nombre, precio, stock]
         );
+        console.log(req.body);
         res.status(201).json({ id: rows,insertId, nombre, precio, stock });
     } catch (error) {
         return res.status(500).json({ message: "Algo salio mal al ELIMINAR un articulo"})

@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-
+import cors from "cors";
 //importar Rutas
 import articulosRoutes from "./routes/articulos.routes.js";
 import polizasRoutes from "./routes/polizas.routes.js";
@@ -8,9 +8,12 @@ import polizasRoutes from "./routes/polizas.routes.js";
 
 //se crea el servidor
 const app = express(); 
+
 //Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({extended: false}));
 
 //RUTAS
 app.use("/api", articulosRoutes);

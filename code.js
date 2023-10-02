@@ -11,21 +11,21 @@ const stock = document.getElementById('stock');
 let opcion = '';
 
 btnCrear.addEventListener('click', () => {
-    descripcion.value = ''
-    precio.value = ''
-    stock.value = ''
-    modalArticulo.show()
-    opcion = 'crear'
+    nombre.value = '';
+    precio.value = '';
+    stock.value = '';
+    modalArticulo.show(); //abre modal
+    opcion = 'crear';
 });
 
 const mostrar = (articulos) => {
     articulos.forEach(articulo => {
         resultados += ` <tr>
-        <td>${articulo.id}</td>
-        <td>${articulo.descripcion}</td>
-        <td>${articulo.precio}</td>
-        <td>${articulo.stock}</td>
-        <td><a class="btnBorrar btn btn-danger"></a></td>
+        <td class="text-center">${articulo.id}</td>
+        <td class="text-center">${articulo.nombre}</td>
+        <td class="text-center">${articulo.precio}</td>
+        <td class="text-center">${articulo.stock}</td>
+        <td class="text-center"><a class="btnBorrar btn btn-danger">Borrar</a></td>
         </tr>
         `
     });
