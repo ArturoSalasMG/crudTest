@@ -1,0 +1,80 @@
+  <%- include("templates/cabecera"), {tituloWeb: "Pagina Articulos"}  %>
+  <body>
+    <h1><%= tituloWeb%></h1>
+      <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
+        <!-- <button id="btnCrear" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="modalArticulo">Crear</button> -->
+        <table  id="tablaArticulos" class="table mt-2 table-borderdared table-striped">
+            <thead>
+                <tr class="text-center">
+                    <td>ID</td>
+                    <td>Descripcion</td>
+                    <td>Precio</td>
+                    <td>Stock</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+              <% rows.forEach((element) => { %>
+                <tr>
+                  <td style="text-align: center;"><%= element.id %></td>
+                  <td style="text-align: center;"><%= element.nombre %></td>
+                  <td style="text-align: center;"><%= element.precio %></td>
+                  <td style="text-align: center;"><%= element.stock %></td>
+                  <td style="text-align: center;">
+                    <!--<form action="/api/articulos/<%= element.id %>" method="POST"> la ruta es api/articulos/id -->
+                      <!-- <input type="hidden" name="_method" value="DELETE">
+                      <button class="btn btn-outline-danger" type="submit">Eliminar</button>
+                    </form> -->
+                    <a href="/api/articulos/delete/<%= element.id %>" class="btn btn-danger">Eliminar</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalArticulo">
+        Abrir Modal
+      </button>
+      <a href="">Ver Movimientos</a>
+      <a href="">Ver poliza</a>
+    </div>
+    
+    <div id="modalArticulo" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Articulo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/api/articulos" method="POST">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Nombre del articulo:</label>
+                <input name="nombre" type="text" class="form-control" id="nombre">
+              </div>
+              <div class="mb-3">
+                <label for="precio" class="col-form-label">Precio:</label>
+                <input name="precio" type="number" class="form-control" id="precio"></input>
+              </div>
+              <div class="mb-3">
+                <label for="stock" class="col-form-label">Stock:</label>
+                <input name="stock" type="number" class="form-control" id="stock"></input>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="btncrearArticulo" type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <!-- <script src="../code.js"></script> -->
+  </body>
+</html>
+

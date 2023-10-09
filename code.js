@@ -1,8 +1,9 @@
-const url = 'http://localhost:3000/api/articulos';
-const contenedor = document.querySelector('tbody');
-let resultados = '';
 
-const modalArticulo = new bootstrap.Modal(document.getElementById('modalArticulo'));
+const url = 'http://localhost:3000/api/articulos'; //GET
+const contenedor = document.querySelector('tbody');
+
+let resultados = '';
+let modalArticulo = new bootstrap.Modal(document.getElementById('modalArticulo'));
 const formArticulo = document.querySelector('form')
 const descripcion =  document.getElementById('descripcion');
 const precio =  document.getElementById('precio');
@@ -33,6 +34,17 @@ const mostrar = (articulos) => {
 }
 
 fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Colocar la impresión dentro de esta función
+        mostrar(data);
+    })
+    .catch(error => console.log(error));
+
+fetch('https://jsonplaceholder.typicode.com/posts')
     .then( response => response.json() )
-    .then(data => mostrar(data))
-    .catch(error => console.log(error))
+    .then(data => {console.log(data);})
+.catch(error => console.log(error))
+
+//https://jsonplaceholder.typicode.com/posts
+

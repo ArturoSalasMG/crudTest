@@ -49,7 +49,6 @@ export const crearPolizas = async (req, res) => {
             "INSERT INTO polizas (nombre, cantidad) VALUES (?, ?)",
             [nombre, cantidad]
         );
-
         res.status(201).json({ id: rows,insertId, nombre, cantidad });
     } catch (error) {
         return res.status(500).json({ message: "Algo salio mal al Crear la poliza"})
