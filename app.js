@@ -32,7 +32,7 @@ app.use(express.static(__dirname + "/public"));
 
 //RUTAS
 app.use("/api", articulosRoutes); // 3000/api/articulos
-//app.use("/api", polizasRoutes);
+app.use("/api", polizasRoutes);
 //app.use("/api", movimientosRoutes);
 
 app.get('/',function(req, res){

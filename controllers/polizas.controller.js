@@ -2,8 +2,10 @@ import { pool } from "../db.js"
 //todo lo que esta aqui es por parte del Servidor
 export const obtenerPolizas = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM polizas');
-        res.json(rows);
+        const [rows] = await pool.query('SELECT articulos.id AS id_articulo, articulos.nombre AS nombre_articulo, polizas.id AS id_poliza, polizas.nombre AS nombre_poliza, polizas.cantidad FROM articulos INNER JOIN polizas ON articulos.id = polizas.idarticulo'); 
+        //res.json(rows);
+        res.render("../views/polizas.ejs", {tituloWeb: "Pagina Polizas", rows: rows});
+
     } catch (error) {
         return res.status(500).json({ message: "Algo salio mal" });
     }
@@ -27,16 +29,14 @@ export const obtenerPoliza = async (req, res) => {
 
 export const borrarPolizas = async (req, res) => {
     try {
-        const { id } = req.param
-        const [rows] = await pool.query('SELECT * FROM polizas WHERE id = ?' ,[
-            id,
-        ]);
+        const { id } = req.params;
+        const [rows] = await pool.query('DELETE FROM polizas WHERE id = ?', [id]);
 
         if (rows.length <= 0) {
             return res.status(400).json({ message: "Poliza no encontrado" })
         }
-
-        res.json(rows[0]);
+        //res.json(rows[0]);
+        res.redirect('../../polizas/'); 
     } catch (error) {
         return res.status(500).json({ message: "Algo salio mal al solicitar el empleado" });    }
 };

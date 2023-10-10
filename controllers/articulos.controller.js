@@ -74,7 +74,7 @@ export const actualizarArticulo = async (req, res) => {
         id,
       ]);
   
-      res.json(rows[0]);
+      res.json(rows[0]); //deberia cambiar a un redirect a la rama principal
     } catch (error) {
       return res.status(500).json({ message: "Algo salio mal" });
     }

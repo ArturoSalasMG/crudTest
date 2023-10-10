@@ -1,5 +1,12 @@
-  <%- include("templates/cabecera"), {tituloWeb: "Pagina Articulos"}  %>
+  <%- include("templates/cabecera"), {tituloWeb: "Articulos"}  %>
   <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+            <a class="navbar-brand" aria-current="page" href="#">Articulos</a>
+            <a class="navbar-brand" href="http://localhost:3000/api/polizas">Polizas</a>
+            <a class="navbar-brand" href="#">Movimientos</a>
+      </div>
+    </nav>
     <h1><%= tituloWeb%></h1>
       <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
         <!-- <button id="btnCrear" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="modalArticulo">Crear</button> -->
@@ -30,10 +37,8 @@
     </div>
     <div class="container">
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalArticulo">
-        Abrir Modal
+        Agregar Articulo
       </button>
-      <a href="">Ver Movimientos</a>
-      <a href="">Ver poliza</a>
     </div>
     
     <div id="modalArticulo" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

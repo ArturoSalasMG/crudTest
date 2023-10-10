@@ -1,0 +1,82 @@
+  <%- include("templates/cabecera"), {tituloWeb: "Pagina Polizas"}  %>
+  <body>
+    <h1><%= tituloWeb%></h1>
+      <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
+        <!-- <button id="btnCrear" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="modalArticulo">Crear</button> -->
+        <table id="tablaPolizas" class="table mt-2 table-borderdared table-striped">
+            <thead>
+                <tr class="text-center">
+                    <td>ID Poliza</td>
+                    <td>Descripcion</td>
+                    <td>Cantidad</td>
+                    <td>Nombre del articulo</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+              <% rows.forEach((element) => { %>
+                <tr>
+                  <td style="text-align: center;"><%= element.id_poliza %></td>
+                  <td style="text-align: center;"><%= element.nombre_poliza %></td>
+                  <td style="text-align: center;"><%= element.cantidad %></td>
+                  <td style="text-align: center;"><%= element.nombre_articulo %></td>
+                  <td style="text-align: center;">
+                    <a href="/api/polizas/delete/<%= element.id_poliza %>" class="btn btn-danger">Eliminar</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPoliza">
+        Crear Poliza
+      </button>
+    </div>
+    
+    <div id="modalPoliza" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Articulo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/api/polizas" method="POST">
+              <div class="mb-3">
+                <select name="nombre" id="nombre">
+                  <option value="-1" selected disabled hidden>Selecciona una opcion</option> 
+                  <option value="Dañado">Dañado</option>
+                  <option value="Extraviado">Extraviado</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="cantidad" class="col-form-label">¿Cuantos articulos se perdieron/dañaron?</label>
+                <input name="cantidad" type="number" class="form-control" id="cantidad"></input>
+              </div>
+              <div class="mb-3">
+                <!-- Es nesario hacer un forEach en la columna de idarticulo -->
+                <select name="idarticulo" id="idarticulo">
+                  <option value="-1" selected disabled hidden>Selecciona una opcion</option> 
+                  <% rows.forEach((element) => { %>
+                    <option value="<%= element.id_articulo %>"> <%= element.nombre_articulo %> </option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="btncrearPoliza" type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <!-- <script src="../code.js"></script> -->
+  </body>
+</html>
+
