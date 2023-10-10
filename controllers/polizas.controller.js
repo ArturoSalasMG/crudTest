@@ -1,5 +1,5 @@
 import { pool } from "../db.js"
-
+//todo lo que esta aqui es por parte del Servidor
 export const obtenerPolizas = async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM polizas');

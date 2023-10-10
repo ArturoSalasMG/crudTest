@@ -9,15 +9,15 @@ import {
 
 const router = Router();
 
+// CREATE AN 
+router.post('/polizas', crearPolizas);
 //GET ALL   
 router.get('/polizas', obtenerPolizas);
 // GET AN 
 router.get('/polizas/:id', obtenerPoliza);
-// DELETE AN
-router.delete('/polizas/:id', borrarPolizas);
-// CREATE AN 
-router.post('/polizas', crearPolizas);
 // UPDATE
 router.patch('/polizas/:id', actualizarPolizas);
+// DELETE AN
+router.get('/polizas/:id', borrarPolizas);
 
 export default router;

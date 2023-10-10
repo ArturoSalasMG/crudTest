@@ -1,4 +1,4 @@
-  <%- include("templates/cabecera"), {tituloWeb: "Pagina Articulos"}  %>
+  <%- include("templates/cabecera"), {tituloWeb: "Pagina Polizas"}  %>
   <body>
     <h1><%= tituloWeb%></h1>
       <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
@@ -21,10 +21,6 @@
                   <td style="text-align: center;"><%= element.precio %></td>
                   <td style="text-align: center;"><%= element.stock %></td>
                   <td style="text-align: center;">
-                    <!--<form action="/api/articulos/<%= element.id %>" method="POST"> la ruta es api/articulos/id -->
-                      <!-- <input type="hidden" name="_method" value="DELETE">
-                      <button class="btn btn-outline-danger" type="submit">Eliminar</button>
-                    </form> -->
                     <a href="/api/articulos/delete/<%= element.id %>" class="btn btn-danger">Eliminar</a>
                   </td>
                 </tr>

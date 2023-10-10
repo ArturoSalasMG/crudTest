@@ -21,10 +21,6 @@
                   <td style="text-align: center;"><%= element.precio %></td>
                   <td style="text-align: center;"><%= element.stock %></td>
                   <td style="text-align: center;">
-                    <!--<form action="/api/articulos/<%= element.id %>" method="POST"> la ruta es api/articulos/id -->
-                      <!-- <input type="hidden" name="_method" value="DELETE">
-                      <button class="btn btn-outline-danger" type="submit">Eliminar</button>
-                    </form> -->
                     <a href="/api/articulos/delete/<%= element.id %>" class="btn btn-danger">Eliminar</a>
                   </td>
                 </tr>
@@ -70,11 +66,9 @@
         </div>
       </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <!-- <script src="../code.js"></script> -->
   </body>
 </html>
 
