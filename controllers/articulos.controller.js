@@ -20,11 +20,12 @@ export const obtenerArticulo = async (req, res) => {
         if (rows.length <= 0) {
             return res.status(400).json({ message: "Articulo no encontrado" })
         }
-        
-        res.render("../views/index.ejs", {tituloWeb: "Pagina Articulos", rows: rows});
+
+        res.render("../views/templates/editararticulos.ejs", {tituloWeb: "Pagina Articulos", rows: rows});
         //res.json(rows[0]);
     } catch (error) {
-        return res.status(500).json({ message: "Algo salio mal al solicitar el articulo" });    }
+        return res.status(500).json({ message: "Algo salio mal al solicitar el articulo" });
+      }
 };
 
 export const borrarArticulo = async (req, res) => {
@@ -58,24 +59,19 @@ export const crearArticulo = async (req, res) => {
 
 export const actualizarArticulo = async (req, res) => {
     try {
-      const { id } = req.params.id;
+      const { id } = req.params;
       const {nombre, precio, stock} = req.body;
-  
       const [result] = await pool.query(
         "UPDATE articulos SET nombre = IFNULL(?, nombre), precio = IFNULL(?, precio), stock = IFNULL(?, stock) WHERE id = ?",
         [nombre, precio, stock, id]
       );
-  
-      if (result.affectedRows === 0)
+      if (result.affectedRows === 0) {
         return res.status(404).json({ message: "Articulo no encontrado" });
-  
-      const [rows] = await pool.query("SELECT * FROM articulos WHERE id = ?", [
-        id,
-      ]);
-  
-      res.json(rows[0]); //deberia cambiar a un redirect a la rama principal
+      }
+
+      res.redirect('../../articulos/');
     } catch (error) {
       return res.status(500).json({ message: "Algo salio mal" });
     }
-  };
+};
   

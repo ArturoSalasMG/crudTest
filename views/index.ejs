@@ -24,9 +24,8 @@
                   <td style="text-align: center;">
                     <a href="/api/articulos/delete/<%= element.id %>" class="btn btn-danger">Eliminar</a>
                     <!-- no quiero que me redirigia a otra URL quiero que abra el modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdateArticulo">
-                      Editar
-                    </button>
+                    <!-- <button type="button" class="btn btn-primary editar-articulo" data-bs-toggle="modal" data-bs-target="#modalUpdateArticulo" data-id="<%= element.id %>" data-nombre="<%= element.nombre %>" data-precio="<%= element.precio %>" data-stock="<%= element.stock %>">Editar</button> -->
+                    <a href="/api/articulos/<%= element.id %>" class="btn btn-primary">Editar</a>
                   </td>
                 </tr>
               <% }) %>
@@ -81,18 +80,18 @@
           </div>
           <div class="modal-body">
             <!--va a la ruta, actualiza y redirige a 'http://localhost:3000/api/articulos' -->
-            <form action="/api/articulos/update/<%= rows.id %>" method="POST">
+            <form action="/api/articulos/update/<%=  %>" method="POST">
               <div class="mb-3">
                 <label for="nombre" class="col-form-label">Nombre del articulo:</label>
-                <input name="nombre" type="text" class="form-control" id="nombre" value="<%= rows.nombre %>">
+                <input name="nombre" type="text" class="form-control" id="nombre" value="<%=  %>">
               </div>
               <div class="mb-3">
                 <label for="precio" class="col-form-label">Precio:</label>
-                <input name="precio" type="number" class="form-control" id="precio" value="<%= rows.precio %>">
+                <input name="precio" type="number" class="form-control" id="precio" value="<%=  %>">
               </div>
               <div class="mb-3">
                 <label for="stock" class="col-form-label">Stock:</label>
-                <input name="stock" type="number" class="form-control" id="stock" value="<%= rows.stock %>">
+                <input name="stock" type="number" class="form-control" id="stock" value="<%=  %>">
               </div>
             </div>
             <div class="modal-footer">

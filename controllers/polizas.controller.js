@@ -68,19 +68,25 @@ export const borrarPolizas = async (req, res) => {
 export const crearPolizas = async (req, res) => {
     try {
         const {nombre, cantidad, idarticulo} = req.body;
+
+        const [articulo] = await pool.query('SELECT * FROM articulos WHERE id = ?' ,[idarticulo]);
+
+        const stockDisponible = articulo[0].stock;
+
+        if (cantidad > stockDisponible) {
+            return res.status(400).json({ message: "La cantidad ingresada es mayor que el stock disponible" });
+        }
+
         await pool.query(
             "INSERT INTO polizas (nombre, cantidad, idarticulo) VALUES (?, ?, ?)",
             [nombre, cantidad, idarticulo]
         );
 
-        /* crear movimiento con descripcion de dañado o perdio*/
-        /* falta hacer stock - cantidad */
         await pool.query(
             "INSERT INTO movimientos (nombre, cantidad, idarticulo) VALUES (?, ?, ?)",
             [nombre, cantidad, idarticulo]
         );
 
-        // Realiza una actualización en la tabla "articulos" para restar la cantidad de la póliza al stock
         await pool.query(
             "UPDATE articulos SET stock = stock - ? WHERE id = ?",
             [cantidad, idarticulo]

@@ -13,10 +13,12 @@ const router = Router();
 router.post('/articulos', crearArticulo);
 //GET ALL   
 router.get('/articulos', obtenerArticulos);
+
 // GET AN 
 router.get('/articulos/:id', obtenerArticulo);
 // UPDATE
-router.patch('/articulos/:id', actualizarArticulo);
+router.post('/articulos/update/:id', actualizarArticulo);
+
 // DELETE AN
 router.get('/articulos/delete/:id', borrarArticulo);
 
