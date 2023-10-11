@@ -15,15 +15,14 @@ export const obtenerArticulos = async (req, res) => {
 export const obtenerArticulo = async (req, res) => {
     try {
       const { id } = req.params;
-        const [rows] = await pool.query('SELECT * FROM articulos WHERE id = ?' ,[
-            id,
-        ]);
+        const [rows] = await pool.query('SELECT * FROM articulos WHERE id = ?' ,[id]);
 
         if (rows.length <= 0) {
             return res.status(400).json({ message: "Articulo no encontrado" })
         }
-
-        res.json(rows[0]);
+        
+        res.render("../views/index.ejs", {tituloWeb: "Pagina Articulos", rows: rows});
+        //res.json(rows[0]);
     } catch (error) {
         return res.status(500).json({ message: "Algo salio mal al solicitar el articulo" });    }
 };

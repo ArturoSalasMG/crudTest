@@ -1,5 +1,6 @@
   <%- include("templates/cabecera"), {tituloWeb: "Pagina Polizas"}  %>
   <body>
+    <%- include("templates/navbar")%>
     <h1><%= tituloWeb%></h1>
       <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
         <!-- <button id="btnCrear" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="modalArticulo">Crear</button> -->
@@ -14,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-              <% rows.forEach((element) => { %>
+              <% data.polizas.forEach((element) => { %>
                 <tr>
                   <td style="text-align: center;"><%= element.id_poliza %></td>
                   <td style="text-align: center;"><%= element.nombre_poliza %></td>
@@ -58,7 +59,8 @@
                 <!-- Es nesario hacer un forEach en la columna de idarticulo -->
                 <select name="idarticulo" id="idarticulo">
                   <option value="-1" selected disabled hidden>Selecciona una opcion</option> 
-                  <% rows.forEach((element) => { %>
+                  <% data.articulos.forEach((element) => { %>
+                    <!-- Solo muestra el id de los articulos que tiene poliza -->
                     <option value="<%= element.id_articulo %>"> <%= element.nombre_articulo %> </option>
                   <% }) %>
                 </select>

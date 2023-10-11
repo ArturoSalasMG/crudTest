@@ -18,6 +18,6 @@ router.get('/polizas/:id', obtenerPoliza);
 // UPDATE
 router.patch('/polizas/:id', actualizarPolizas);
 // DELETE AN
-router.get('/polizas/:id', borrarPolizas);
+router.get('/polizas/delete/:id', borrarPolizas);
 
 export default router;

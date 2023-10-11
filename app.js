@@ -8,7 +8,7 @@ import methodOverride from "method-override";
 //importar Rutas
 import articulosRoutes from "./routes/articulos.routes.js";
 import polizasRoutes from "./routes/polizas.routes.js";
-//import movimientosRoutes from "./routes/movimientos.routes.js";
+import movimientosRoutes from "./routes/movimientos.routes.js";
 
 //se crea el servidor
 const app = express(); 
@@ -33,7 +33,7 @@ app.use(express.static(__dirname + "/public"));
 //RUTAS
 app.use("/api", articulosRoutes); // 3000/api/articulos
 app.use("/api", polizasRoutes);
-//app.use("/api", movimientosRoutes);
+app.use("/api", movimientosRoutes);
 
 app.get('/',function(req, res){
     res.render('prueba', {tituloWeb: "Pagina principal"});
