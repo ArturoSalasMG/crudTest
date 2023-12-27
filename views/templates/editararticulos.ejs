@@ -1,25 +1,22 @@
-  <%- include("cabecera"), {tituloWeb: "Articulos Agregar"}  %>
+  <%- include("cabecera"), {tituloWeb: "Editar Articulos"}  %>
   <body>
     <%- include("navbar")%>
     <div class="container">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Editar Articulo</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+        <h3 class="modal-title mt-3" id="exampleModalLabel" style="text-align: center;">Editar Articulo</h3>
       <div class="modal-body">
         <!--va a la ruta, actualiza y redirige a 'http://localhost:3000/api/articulos/update' -->
         <form action="/api/articulos/update/<%= rows[0].id %>" method="POST">
           <div class="mb-3">
             <label for="nombre" class="col-form-label">Nombre del articulo:</label>
-            <input name="nombre" type="text" class="form-control" id="nombre" value=" <%= rows[0].nombre%>">
+            <input name="nombre" type="text" class="form-control" id="nombre" value=" <%= rows[0].nombre%>" required>
           </div>
           <div class="mb-3">
             <label for="precio" class="col-form-label">Precio:</label>
-            <input name="precio" type="number" class="form-control" id="precio" value="<%= rows[0].precio%>">
+            <input name="precio" type="number" class="form-control" id="precio" value="<%= rows[0].precio%>"min="1" max="100000" pattern="^[0-9]+" required>
           </div>
           <div class="mb-3">
             <label for="stock" class="col-form-label">Stock:</label>
-            <input name="stock" type="number" class="form-control" id="stock" value="<%= rows[0].stock%>">
+            <input name="stock" type="number" class="form-control" id="stock" value="<%= rows[0].stock%>"min="1" max="100000" pattern="^[0-9]+" required>
           </div>
         </div>
         <div class="modal-footer">

@@ -31,7 +31,7 @@ app.set('views', join(__dirname, '/views'));
 app.use(express.static(__dirname + "/public"));
 
 //RUTAS
-app.use("/api", articulosRoutes); // 3000/api/articulos
+app.use("/api", articulosRoutes); 
 app.use("/api", polizasRoutes);
 app.use("/api", movimientosRoutes);
 
